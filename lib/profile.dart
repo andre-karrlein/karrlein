@@ -12,12 +12,12 @@ class Profile extends StatelessWidget {
             : MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
           backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.lightBlue,
+          color: Colors.white,
           shape: BoxShape.circle,
           image: DecorationImage(
             image: AssetImage("me.png"),
             alignment: Alignment.center,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
       );
@@ -41,7 +41,7 @@ class Profile extends StatelessWidget {
         height: 10,
       ),
       Text(
-        "TODO",
+        "I'm a senior software engineer at FLYERALARM in Wuerzburg, Germany.",
         softWrap: true,
         textScaleFactor: 1.5,
       ),

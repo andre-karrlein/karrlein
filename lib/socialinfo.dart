@@ -5,39 +5,46 @@ import 'package:karrlein/responsive_widget.dart';
 import 'package:karrlein/navbutton.dart';
 
 class SocialInfo extends StatelessWidget {
-  List<Widget> socialMediaWidgets() {
-    return [
-      NavButton(
-        text: "LinkedIn",
-        onPressed: () {
-          html.window.open("https://linkedin.com/in/andré-karrlein-81879417a", "linkedin");
-        },
-        color: Colors.blue,
-      ),
-      NavButton(
-        text: "Twitter",
-        onPressed: () {
-          html.window.open("https://twitter.com/rb_ak1", "Twitter");
-        },
-        color: Colors.blue,
-      ),
-      NavButton(
-        text: "Github",
-        onPressed: () {
-          html.window.open("https://github.com/andre-karrlein", "Github");
-        },
-        color: Colors.blue,
-      ),
+    List<Widget> socialMediaWidgets() => [
+        Padding(
+            padding: EdgeInsets.all(5.0),
+            child: NavButton(
+                text: "LinkedIn",
+                onPressed: () {
+                    html.window.open("https://linkedin.com/in/andré-karrlein-81879417a", "_blank");
+                },
+                color: Colors.orange,
+            ),
+        ),
+        Padding(
+            padding: EdgeInsets.all(5.0),
+            child: NavButton(
+                text: "Twitter",
+                onPressed: () {
+                    html.window.open("https://twitter.com/rb_ak1", "_blank");
+                },
+                color: Colors.orange,
+            ),
+        ),
+        Padding(
+            padding: EdgeInsets.all(5.0),
+            child: NavButton(
+                text: "Github",
+                onPressed: () {
+                    html.window.open("https://github.com/andre-karrlein", "_blank");
+                },
+                color: Colors.orange,
+            ),
+        ),
     ];
-  }
 
-  Widget copyRightText() => Text(
+    Widget copyRightText() => Text(
         "André Karrlein ©️2020",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.grey,
         ),
-      );
+    );
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'dart:html' as html;
+import 'dart:js';
 import 'package:flutter/material.dart';
 
 import 'package:karrlein/responsive_widget.dart';
@@ -10,26 +11,53 @@ import 'package:karrlein/profile.dart';
 class ProfilePage extends StatelessWidget {
     const ProfilePage({Key key}) : super(key: key);
 
-    List<Widget> navButtons() => [
-        NavButton(
-          text: "about",
-          onPressed: () {
-            html.window.open("/", "Ak");
-          },
+    List<Widget> navButtons(BuildContext context) => [
+        /*Padding(
+            padding: EdgeInsets.all(2.0),
+            child: NavButton(
+                text: "about me",
+                onPressed: () {
+                    createDialog(context, "About me", "TODO");
+                },
+            ),
         ),
-        NavButton(
-          text: "work",
-          onPressed: () {
-            html.window.open("/", "Ak");
-          },
-        ),
-        NavButton(
-          text: "contact",
-          onPressed: () {
-            html.window.open("/", "Ak");
-          },
+        Padding(
+            padding: EdgeInsets.all(2.0),
+            child: NavButton(
+                text: "resume",
+                onPressed: () {
+                    createDialog(context, "Resume", "TODO");
+                },
+            ),
+        ),*/
+        Padding(
+            padding: EdgeInsets.all(2.0),
+            child: NavButton(
+                text: "contact",
+                onPressed: () {
+                    html.window.open("mailto:andre@karrlein.com", "_self");
+                },
+            ),
         ),
       ];
+
+    createDialog(BuildContext context, String title, String content) {
+        return showDialog(context: context, builder: (context) {
+            return AlertDialog(
+                title: Text(title),
+                content: Text(content),
+                actions: <Widget>[
+                    NavButton(
+                        text: "close",
+                        onPressed: () {
+                            Navigator.of(context).pop();
+                        },
+                        color: Colors.redAccent,
+                    )
+                ],
+            );
+        });
+    }
 
     @override
     Widget build(BuildContext context) {
@@ -45,7 +73,7 @@ class ProfilePage extends StatelessWidget {
 					? Drawer(
 						child: ListView(
 							padding: const EdgeInsets.all(20),
-							children: navButtons(),
+							children: navButtons(context),
                         ),
                     )
                     : null,
@@ -57,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                             largeScreen: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-									NavHeader(navButtons: navButtons()),
+									NavHeader(navButtons: navButtons(context)),
                                     SizedBox(
                                         height: MediaQuery.of(context).size.height * 0.1,
                                     ),
