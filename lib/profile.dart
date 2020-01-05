@@ -15,7 +15,7 @@ class Profile extends StatelessWidget {
           color: Colors.white,
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("me.png"),
+            image: AssetImage("images/me.png"),
             alignment: Alignment.center,
             fit: BoxFit.contain,
           ),
