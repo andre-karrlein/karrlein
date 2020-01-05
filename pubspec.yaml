@@ -59,8 +59,7 @@ flutter:
   fonts:
     - family: PT Sans
       fonts:
-        - asset: https://fonts.gstatic.com/s/ptsans/v11/jizaRExUiTo99u79D0-ExcOPIDUg-g.woff2
-  #       - asset: fonts/Schyler-Italic.ttf
+        - asset: fonts/pt_sans.woff2
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
