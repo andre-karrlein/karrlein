@@ -89,9 +89,14 @@ class ProfilePage extends StatelessWidget {
                                 new UserAccountsDrawerHeader(
                                     accountName: new Text("André Karrlein"),
                                     accountEmail: new Text("andre@karrlein.com"),
+                                    currentAccountPicture: new CircleAvatar(backgroundImage: new AssetImage('assets/images/me.png')),
+                                    arrowColor: Theme.of(context).backgroundColor,
                                     onDetailsPressed: () {},
                                 ),
                                 ...navButtons(context),
+                                Divider(
+                                    height: 2.0,
+                                ),
                                 ...SocialInfo().socialMediaWidgets()
                             ]
                         ),
