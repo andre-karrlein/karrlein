@@ -11,13 +11,16 @@ class Profile extends StatelessWidget {
             ? MediaQuery.of(context).size.height * 0.25
             : MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
-          backgroundBlendMode: BlendMode.luminosity,
           color: Colors.white,
           shape: BoxShape.circle,
           image: DecorationImage(
             image: AssetImage('assets/images/me.png'),
             alignment: Alignment.center,
             fit: BoxFit.contain,
+          ),
+          border: new Border.all(
+            color: Colors.blue,
+            width: 10.0
           ),
         ),
       );
@@ -32,7 +35,7 @@ class Profile extends StatelessWidget {
       ),
       Text(
         "André\nKarrlein",
-        textScaleFactor: 4,
+        textScaleFactor: 3,
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -57,7 +60,10 @@ class Profile extends StatelessWidget {
       largeScreen: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileImage(context), profileData],
+        children: <Widget>[
+            profileImage(context),
+            profileData
+        ],
       ),
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,

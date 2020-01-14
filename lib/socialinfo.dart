@@ -1,19 +1,33 @@
-import 'dart:html' as html;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:karrlein/responsive_widget.dart';
 import 'package:karrlein/navbutton.dart';
 
 class SocialInfo extends StatelessWidget {
+
+    void openLink(String url, String target) async {
+        if(kIsWeb) {
+            html.window.open(url, target);
+        } else {
+            if(await canLaunch(url)) {
+                launch(url);
+            }
+        }
+    }
+
+
     List<Widget> socialMediaWidgets() => [
         Padding(
             padding: EdgeInsets.all(5.0),
             child: NavButton(
                 text: "LinkedIn",
                 onPressed: () {
-                    html.window.open("https://linkedin.com/in/andré-karrlein-81879417a", "_blank");
+                    openLink("https://linkedin.com/in/andré-karrlein-81879417a", "_blank");
                 },
-                color: Colors.orange,
+                color: Colors.blue,
             ),
         ),
         Padding(
@@ -21,9 +35,9 @@ class SocialInfo extends StatelessWidget {
             child: NavButton(
                 text: "Twitter",
                 onPressed: () {
-                    html.window.open("https://twitter.com/rb_ak1", "_blank");
+                    openLink("https://twitter.com/rb_ak1", "_blank");
                 },
-                color: Colors.orange,
+                color: Colors.blue,
             ),
         ),
         Padding(
@@ -31,9 +45,9 @@ class SocialInfo extends StatelessWidget {
             child: NavButton(
                 text: "Github",
                 onPressed: () {
-                    html.window.open("https://github.com/andre-karrlein", "_blank");
+                    openLink("https://github.com/andre-karrlein", "_blank");
                 },
-                color: Colors.orange,
+                color: Colors.blue,
             ),
         ),
     ];
@@ -61,7 +75,7 @@ class SocialInfo extends StatelessWidget {
       ),
       smallScreen: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+        children: ResponsiveWidget.isSmallScreen(context) ? <Widget>[copyRightText()] : <Widget>[
           ...socialMediaWidgets(),
           copyRightText(),
         ],

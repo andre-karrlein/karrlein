@@ -1,5 +1,7 @@
-import 'dart:html' as html;
-import 'dart:js';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:karrlein/responsive_widget.dart';
@@ -9,10 +11,21 @@ import 'package:karrlein/socialinfo.dart';
 import 'package:karrlein/profile.dart';
 
 class ProfilePage extends StatelessWidget {
+
+    void openLink(String url, String target) async {
+        if(kIsWeb) {
+            html.window.open(url, target);
+        } else {
+            if(await canLaunch(url)) {
+                launch(url);
+            }
+        }
+    }
+
     const ProfilePage({Key key}) : super(key: key);
 
     List<Widget> navButtons(BuildContext context) => [
-        /*Padding(
+        Padding(
             padding: EdgeInsets.all(2.0),
             child: NavButton(
                 text: "about me",
@@ -29,13 +42,13 @@ class ProfilePage extends StatelessWidget {
                     createDialog(context, "Resume", "TODO");
                 },
             ),
-        ),*/
+        ),
         Padding(
             padding: EdgeInsets.all(2.0),
             child: NavButton(
                 text: "contact",
                 onPressed: () {
-                    html.window.open("mailto:andre@karrlein.com", "_self");
+                    openLink("mailto:andre@karrlein.com", "_self");
                 },
             ),
         ),
@@ -72,8 +85,15 @@ class ProfilePage extends StatelessWidget {
                 drawer: ResponsiveWidget.isSmallScreen(context)
 					? Drawer(
 						child: ListView(
-							padding: const EdgeInsets.all(20),
-							children: navButtons(context),
+							children: <Widget>[
+                                new UserAccountsDrawerHeader(
+                                    accountName: new Text("André Karrlein"),
+                                    accountEmail: new Text("andre@karrlein.com"),
+                                    onDetailsPressed: () {},
+                                ),
+                                ...navButtons(context),
+                                ...SocialInfo().socialMediaWidgets()
+                            ]
                         ),
                     )
                     : null,
