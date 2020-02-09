@@ -9,6 +9,7 @@ import 'package:karrlein/navbutton.dart';
 import 'package:karrlein/navheader.dart';
 import 'package:karrlein/socialinfo.dart';
 import 'package:karrlein/profile.dart';
+import 'package:karrlein/resume.dart';
 
 class ProfilePage extends StatelessWidget {
 
@@ -39,7 +40,7 @@ class ProfilePage extends StatelessWidget {
             child: NavButton(
                 text: "resume",
                 onPressed: () {
-                    createDialog(context, "Resume", "TODO");
+                    createResumeDialog(context);
                 },
             ),
         ),
@@ -54,6 +55,23 @@ class ProfilePage extends StatelessWidget {
         ),
       ];
 
+    createResumeDialog(BuildContext context) {
+        return showDialog(context: context, builder: (context) {
+            return AlertDialog(
+                title: Text("Resume"),
+                content: MyResumePage(),
+                actions: <Widget>[
+                    NavButton(
+                        text: "close",
+                        onPressed: () {
+                            Navigator.of(context).pop();
+                        },
+                        color: Colors.redAccent,
+                    )
+                ],
+            );
+        });
+    }
     createDialog(BuildContext context, String title, String content) {
         return showDialog(context: context, builder: (context) {
             return AlertDialog(
