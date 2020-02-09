@@ -15,6 +15,7 @@ RUN flutter config --enable-web
 
 COPY . /code
 WORKDIR /code
+RUN /usr/local/flutter/bin/flutter pub get
 RUN /usr/local/flutter/bin/flutter build web
 
 FROM golang as builder

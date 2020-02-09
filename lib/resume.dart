@@ -17,7 +17,7 @@ class MyResumePage extends StatefulWidget {
 class _MyResumePageState extends State<MyResumePage> {
 
     Future<List<Experience>> _getExperiences() async {
-        var data = await http.get("http://api.karrlein.com/resume/v1/experience/");
+        var data = await http.get("https://api.karrlein.com/resume/v1/experience/");
         var jsonData = json.decode(data.body);
 
         List<Experience> experiences = [];
