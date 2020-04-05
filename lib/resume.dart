@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 class MyResumePage extends StatefulWidget {
     MyResumePage({Key key, this.title}) : super(key: key);
 
@@ -48,10 +47,25 @@ class _MyResumePageState extends State<MyResumePage> {
                                     shrinkWrap: true,
                                     itemCount: snapshot.data.length,
                                     itemBuilder: (BuildContext context, int index) {
-                                        return ListTile(
-                                                leading: Text(snapshot.data[index].role),
-                                                title: Text(snapshot.data[index].company),
-                                                subtitle: Text(snapshot.data[index].timeframe),
+                                        return Card(
+                                          color: Theme.of(context).accentColor,
+                                          child: ListTile(
+                                                leading: Container(
+                                                  width: MediaQuery.of(context).size.width * 0.20,
+                                                  child: Text(
+                                                    snapshot.data[index].role,
+                                                    style: TextStyle(color: Colors.white),
+                                                    ),
+                                                ),
+                                                title: Text(
+                                                  snapshot.data[index].company,
+                                                  style: TextStyle(color: Colors.white),
+                                                  ),
+                                                subtitle: Text(
+                                                    snapshot.data[index].timeframe,
+                                                    style: TextStyle(color: Colors.white),
+                                                  ),
+                                          )
                                         );
                                     },
                             );

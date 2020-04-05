@@ -26,7 +26,7 @@ class ProfilePage extends StatelessWidget {
     const ProfilePage({Key key}) : super(key: key);
 
     List<Widget> navButtons(BuildContext context) => [
-        Padding(
+        /*Padding(
             padding: EdgeInsets.all(2.0),
             child: NavButton(
                 text: "about me",
@@ -34,7 +34,7 @@ class ProfilePage extends StatelessWidget {
                     createDialog(context, "About me", "TODO");
                 },
             ),
-        ),
+        ),*/
         Padding(
             padding: EdgeInsets.all(2.0),
             child: NavButton(

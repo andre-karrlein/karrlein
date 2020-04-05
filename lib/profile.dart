@@ -44,7 +44,7 @@ class Profile extends StatelessWidget {
         height: 10,
       ),
       Text(
-        "I'm a senior software engineer at FLYERALARM in Wuerzburg, Germany.",
+        "I'm a solution architect at Red Bull in Salzburg, Austria.",
         softWrap: true,
         textScaleFactor: 1.5,
       ),
