@@ -12,12 +12,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         backgroundColor: Colors.white,
+        accentColor: Colors.lightBlue,
         iconTheme: new IconThemeData(color: Colors.blue),
         fontFamily: "PT Sans",
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         backgroundColor: Colors.black,
+        accentColor: Colors.blue,
         iconTheme: new IconThemeData(color: Colors.white),
         fontFamily: "PT Sans",
       ),

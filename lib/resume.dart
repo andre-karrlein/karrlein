@@ -53,14 +53,21 @@ class _MyResumePageState extends State<MyResumePage> {
                                           child: ListTile(
                                                 leading: Container(
                                                   width: MediaQuery.of(context).size.width * 0.20,
-                                                  child: Text(
-                                                    snapshot.data[index].role,
-                                                    style: TextStyle(color: Colors.white),
+                                                  child:
+                                                    Text(
+                                                      snapshot.data[index].role,
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.bold
+                                                      ),
                                                     ),
                                                 ),
                                                 title: Text(
                                                   snapshot.data[index].company,
-                                                  style: TextStyle(color: Colors.white),
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold
+                                                    ),
                                                   ),
                                                 subtitle: Text(
                                                     snapshot.data[index].timeframe,
